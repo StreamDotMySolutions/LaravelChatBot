@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/ping', fn () => ['message' => 'pong']);
 
-// Telegram Chat
+
 use App\Http\Controllers\Api\TelegramController;
-Route::post('/telegram', [TelegramController::class, 'handle']);
+Route::middleware(['verify.token'])->group(function () {
+    // Telegram Chat   
+    Route::post('/telegram', [TelegramController::class, 'handle']);
+});
