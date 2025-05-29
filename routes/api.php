@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return redirect('/api/ping');
-});
-
 Route::get('/ping', fn () => ['message' => 'pong']);
+
+// Telegram Chat
+use App\Http\Controllers\Api\TelegramController;
+Route::post('/telegram', [TelegramController::class, 'handle']);
