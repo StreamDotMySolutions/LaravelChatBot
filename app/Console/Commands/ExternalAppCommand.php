@@ -62,12 +62,12 @@ class ExternalAppCommand extends Command
         }
 
         $this->table(
-            ['ID', 'Name', 'Client ID', 'Token', 'Active', 'Expires At', 'Created'],
+            ['ID', 'Name', 'Active', 'Expires At', 'Created'],
             $apps->map(fn($app) => [
                 $app->id,
                 $app->name,
-                $app->client_id,
-                $app->api_token,
+                //$app->client_id,
+                //$app->api_token,
                 $app->is_active ? 'YA' : 'TIDAK',
                 $app->token_expires_at?->format('Y-m-d') ?? 'Tidak Tamat',
                 $app->created_at->format('Y-m-d'),
