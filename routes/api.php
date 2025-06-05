@@ -17,7 +17,11 @@ Route::get('/ping', fn () => ['message' => 'pong']);
 
 
 use App\Http\Controllers\Api\TelegramController;
+use App\Http\Controllers\Api\DocumentController;
 Route::middleware(['verify.token'])->group(function () {
     // Telegram Chat   
     Route::post('/telegram', [TelegramController::class, 'handle']);
+
+    // Upload PDF or DOC   
+    Route::post('/document', [DocumentController::class, 'store']);
 });
